@@ -1,0 +1,35 @@
+class WatchPriceCalculator{ 
+ String getWatchPrice(String watchType, int age, String gender){  
+   //code to computer and return the price of watch up to two decimal  places 
+ 
+     double costPrice = 0;
+     double profitPer = 0;
+     double gst = 0;
+     int dis = 0;
+     double totalPrice = 0;
+     
+     if(watchType.equals("Titan")){
+         costPrice = 7999;
+         profitPer = 12.5;
+         gst = 7.5;
+     }else if(watchType.equals("Rolex")){
+         costPrice = 10999;
+         profitPer = 13.5;
+         gst = 12.5;
+     }
+     
+     totalPrice = costPrice + ((costPrice*(profitPer+gst))/100);
+     
+     if(gender.equals("female")){
+         dis+=2;
+     }
+     
+     if(age>=60){
+         dis+=3;
+     }
+     
+     totalPrice = totalPrice - ((totalPrice*dis)/100);
+     return "The total bill amount is "+String.format("%.2f",totalPrice);
+ } 
+} 
+
