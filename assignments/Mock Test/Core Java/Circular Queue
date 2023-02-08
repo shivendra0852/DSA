@@ -1,0 +1,46 @@
+class circular_queue{
+  // implement the class as mentioned in the problem statement above
+    int size;
+    int front = 0;
+    int rear = 0;
+    int count = 0;
+    int[] arr;
+    
+    
+    public circular_queue(int size){
+        this.size = size;
+        this.arr = new int[size];
+    }
+    
+    public void enqueue(int data){
+        if(isFull()){
+            return;
+        }
+        
+        arr[front]=data;
+        count++;
+        front = (front+1)%arr.length;
+    }
+    
+    public void dequeue(){
+        if(isEmpty()){
+            return;
+        }
+        
+        System.out.println(arr[rear]);
+        count--;
+        rear = (rear+1)%arr.length;
+    }
+    
+    public int size(){
+        return count;
+    }
+    
+    public boolean isEmpty(){
+        return count==0;
+    }
+    
+    public boolean isFull(){
+        return count==arr.length;
+    }
+}
