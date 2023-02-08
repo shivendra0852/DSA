@@ -1,0 +1,99 @@
+import java.util.*;
+class employee{
+  // complete the class as mentioned in the problem statement
+
+    int employee_id;
+    String name;
+    int salary;
+    boolean stock_options;
+    int vesting_period;
+    
+    public employee(int employee_id, String name, int salary, boolean stock_options, int vesting_period){
+        this.employee_id=employee_id;
+        this.name=name;
+        this.salary=salary;
+        this.stock_options=stock_options;
+        this.vesting_period=vesting_period;
+    }
+    
+    public String getEmployeeName(){
+        return name;
+    }
+    
+    public boolean getStockOptions(){
+        return stock_options;
+    }
+    
+    public int employeeNumber(){
+        return employee_id;
+    }
+    
+    public String name(){
+        return name;
+    }
+    
+    public int salary(){
+        return salary;
+    }
+    
+    public boolean stock_options(){
+        return stock_options;
+    }
+    
+    public int vesting_period(){
+        if(!stock_options) return 0;
+        else return vesting_period;
+    }
+}
+
+class company{
+  // complete the class as mentioned in the problem statement
+  
+    int size;
+    employee[] arr;
+    
+    public company(int size, employee[] arr){
+        this.size = size;
+        this.arr = arr;
+    }
+    
+    public void sortSalary(){
+        Arrays.sort(arr,(a,b) -> a.salary - b.salary);
+    }
+    
+    public void sortEmployeeId(){
+        Arrays.sort(arr,(a,b) -> a.employee_id - b.employee_id);
+    }
+    
+    public void sortVestingPeriod(){
+        Arrays.sort(arr,(a,b) -> b.vesting_period - a.vesting_period);
+    }
+    
+    public void stockOrNot(int id){
+        employee res = null;
+        for(employee e : arr){
+            if(e.employee_id == id){
+                res = e;
+                break;
+            }
+        }
+        
+        if(res != null){
+            if(res.getStockOptions()){
+                System.out.println("Stock Granted to "+res.getEmployeeName());
+            }else if(!res.getStockOptions()){
+                System.out.println("Stock not Granted to "+res.getEmployeeName());
+            }else{
+                System.out.println("Invalid Employee ID");
+            }
+        }else{
+            System.out.println("Invalid Employee ID");
+        }
+        
+    }
+    
+    public int size(){
+        return size;
+    }
+}
+
